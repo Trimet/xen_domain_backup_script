@@ -16,8 +16,10 @@ do
 			backup_path=`expr substr "$line" "$(($has_equal_sign+1))" "${#line}"`;
 			
 
-			touch "$backup_path/test";
+			log_message="Backup script started";
+			echo "["`date +%d.%m.%y\ %T`"] >>" "$log_message" >> "$backup_path/test";
 			
+			# echo `date +%d.%m.%y\ %T`;
 			# echo "$index";
 			# echo `expr substr "$line" 1 "$(($has_equal_sign-1))"`;
 		fi
