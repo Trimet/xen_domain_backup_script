@@ -14,7 +14,10 @@ do
 			# echo "${line:0:"$has_equal_sign"}";
 
 			backup_path=`expr substr "$line" "$(($has_equal_sign+1))" "${#line}"`;
+			
+
 			touch "$backup_path/test";
+			
 			# echo "$index";
 			# echo `expr substr "$line" 1 "$(($has_equal_sign-1))"`;
 		fi
