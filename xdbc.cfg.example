@@ -5,3 +5,19 @@
 ####                                            ####
 ####################################################
 
+####    Path to backup directory                ####
+[Path]
+backup_path=''
+
+####    Domains to be given salvation           ####
+[Domains]
+domain1
+domain2
+
+####################################################
+####                                            ####
+####    Can not think up of any more lines      ####
+####    Maybe will come up with anything later  ####
+####    Got spellbound by such text formatting  ####
+####                                            ####
+####################################################
