@@ -4,6 +4,9 @@ conf_file="xdbc.cfg";
 backup_path="";
 log_file_name="test";
 
+delimeter_string1="################################################################################"
+delimeter_string2="--------------------------------------------------------------------------------"
+
 while read line 
 do
 # for line in "`cat $conf_file`" ; do
@@ -16,8 +19,8 @@ do
 			# echo "${line:0:"$has_equal_sign"}";
 
 			backup_path="`expr substr "$line" "$(($has_equal_sign+1))" "${#line}"`";
-			
-			echo "##########################################" >> "$backup_path/$log_file_name";
+			 
+			echo "$delimeter_string1" >> "$backup_path/$log_file_name";
 
 			log_message="Backup script started";
 			echo "["`date +%d.%m.%y\ %T`"] >>" "$log_message" >> "$backup_path/$log_file_name";
@@ -38,15 +41,15 @@ do
 			domain_name="`expr substr "$line" 1 "$(($has_delimeter-1))"`"
 			domain_path="`expr substr "$line" "$(($has_delimeter+1))" "${#line}"`"
 
-			echo "------------------------------------------" >> "$backup_path/$log_file_name";
+			echo "$delimeter_string2" >> "$backup_path/$log_file_name";
 
-			log_message="DD of <<$domain_name>> image started";
+			log_message="DD of <$domain_name> image started";
 		
 			echo "["`date +%d.%m.%y\ %T`"] >>" "$log_message" >> "$backup_path/$log_file_name";
 			
 			dd if="$domain_path" of="$backup_path/$domain_name.backup" bs=512M;
 
-			log_message="DD of <<$domain_name>> image ended";
+			log_message="DD of <$domain_name> image ended";
 
 			echo "["`date +%d.%m.%y\ %T`"] >>" "$log_message" >> "$backup_path/$log_file_name";
 		fi
@@ -61,7 +64,7 @@ done < $conf_file
 # echo "$backup_path";
 # echo "$log_file_name";
 
-echo "------------------------------------------" >> "$backup_path/$log_file_name";
+echo "$delimeter_string2" >> "$backup_path/$log_file_name";
 
 log_message="Backup finished";
 echo "["`date +%d.%m.%y\ %T`"] >>" "$log_message" >> "$backup_path/$log_file_name";
