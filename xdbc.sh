@@ -28,7 +28,7 @@ do
 		fi
 
 		if [ "$line" = "[Domains]" ]; then
-			# echo "В этой строке определено начало перечисления доменов";
+			echo "Saving domains";
 
 		fi
 
