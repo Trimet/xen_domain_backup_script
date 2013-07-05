@@ -40,7 +40,7 @@ do
             log_message="DD of <$domain_name> image started";
             echo "["`date +%d.%m.%y\ %T`"] >>" "$log_message" >> "$backup_path/$log_file_name";
 
-            dd if="$domain_path" of="$backup_path/$domain_name.backup" bs=256M;
+            dd if="$domain_path" of="$backup_path/$domain_name.[`date +%d.%m.%y`].backup" bs=256M;
 
             log_message="DD of <$domain_name> image ended";
             echo "["`date +%d.%m.%y\ %T`"] >>" "$log_message" >> "$backup_path/$log_file_name";
