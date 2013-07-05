@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 conf_file="xdbc.cfg";
 backup_path="";
 log_file_name="xdbc.log";
@@ -33,7 +34,7 @@ do
             domain_name="`expr substr "$line" 1 "$(($has_delimeter-1))"`"
             domain_path="`expr substr "$line" "$(($has_delimeter+1))" "${#line}"`"
 
-            xm pause "$domain_name";
+            xm pause "$domain_name" 2>>"$backup_path/$log_file_name";
 
             echo "$delimeter_string2" >> "$backup_path/$log_file_name";
 
@@ -45,7 +46,7 @@ do
             log_message="DD of <$domain_name> image ended";
             echo "["`date +%d.%m.%y\ %T`"] >>" "$log_message" >> "$backup_path/$log_file_name";
 
-            xm unpause "$domain_name";
+            xm unpause "$domain_name" 2>>"$backup_path/$log_file_name";
         fi
     fi
 done < $conf_file
@@ -54,3 +55,6 @@ echo "$delimeter_string2" >> "$backup_path/$log_file_name";
 
 log_message="Backup finished";
 echo "["`date +%d.%m.%y\ %T`"] >>" "$log_message" >> "$backup_path/$log_file_name";
+
+
+exit 0
