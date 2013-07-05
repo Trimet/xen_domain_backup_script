@@ -28,3 +28,11 @@ NOT GOOD NOR WORKING:
 
 Going to release 0.2.0 soon :))
 *need to decide how name releases and what incremention to numbers apply
+
+-------------------------
+
+RELEASE 0.1.1
+
+1. Added datestamp to backup
+2. Now script exit with 0
+3. Error messages writing to log file
