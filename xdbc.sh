@@ -41,6 +41,8 @@ do
 			domain_name="`expr substr "$line" 1 "$(($has_delimeter-1))"`"
 			domain_path="`expr substr "$line" "$(($has_delimeter+1))" "${#line}"`"
 
+			xm pause "$domain_name";
+
 			echo "$delimeter_string2" >> "$backup_path/$log_file_name";
 
 			log_message="DD of <$domain_name> image started";
@@ -52,6 +54,9 @@ do
 			log_message="DD of <$domain_name> image ended";
 
 			echo "["`date +%d.%m.%y\ %T`"] >>" "$log_message" >> "$backup_path/$log_file_name";
+		
+			xm unpause "$domain_name";
+
 		fi
 		
 		#if `$line | grep "Domain"`
